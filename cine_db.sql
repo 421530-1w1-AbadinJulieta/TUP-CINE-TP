@@ -442,3 +442,48 @@ EXEC SP_CONSULTAR_FUNCIONES_CINE
     @fechaDesde = '2025-10-01', 
     @fechaHasta = '2025-11-01';
 
+
+
+CREATE PROCEDURE SP_REPORTE_VENTAS_CINE
+    @fechaDesde DATE,
+    @fechaHasta DATE,
+    @idCine     INT = NULL     
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF @fechaDesde IS NULL OR @fechaHasta IS NULL
+    BEGIN
+        RAISERROR('Debe ingresar ambas fechas para el reporte.', 16, 1);
+        RETURN;
+    END;
+
+    SELECT 
+        p.Titulo AS Pelicula,
+        COUNT(e.ID_entrada)                  AS EntradasVendidas,
+        SUM(e.Precio_unitario)               AS TotalRecaudado,
+        AVG(e.Precio_unitario)               AS PrecioPromedio,
+        MIN(f.Fecha)                         AS PrimeraFuncion,
+        MAX(f.Fecha)                         AS UltimaFuncion
+    FROM Entradas e
+    JOIN Funciones f ON e.ID_funcion = f.ID_funcion
+    JOIN Salas s     ON f.ID_sala     = s.ID_sala
+    JOIN Cines c     ON s.ID_cine     = c.ID_cine
+    JOIN Peliculas p ON f.ID_pelicula = p.ID_pelicula
+    WHERE f.Fecha BETWEEN @fechaDesde AND @fechaHasta
+      AND (@idCine IS NULL OR c.ID_cine = @idCine)       
+    GROUP BY p.Titulo
+    ORDER BY TotalRecaudado DESC;
+END;
+GO
+
+
+EXEC SP_REPORTE_VENTAS_CINE 
+    @fechaDesde = '2025-10-01', 
+    @fechaHasta = '2025-10-31';
+
+
+
+
+
+
