@@ -396,3 +396,173 @@ create table Detalles_facturas (
 	CONSTRAINT FK_Entradas_Det_Fact FOREIGN KEY (ID_entrada) REFERENCES Entradas(ID_entrada),
 	CONSTRAINT FK_Facturas_Det_Fact FOREIGN KEY (ID_Factura) REFERENCES Facturas(ID_factura)
 )
+
+
+CREATE PROCEDURE SP_CONSULTAR_FUNCIONES_CINE
+    @titulo     VARCHAR(50) = NULL,
+    @genero     VARCHAR(50) = NULL,
+    @fechaDesde DATE = NULL,
+    @fechaHasta DATE = NULL,
+    @idCine     INT = NULL          
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        p.Titulo,
+        g.Genero,
+        c.Nombre       AS Cine,
+        s.Nombre_sala  AS Sala,
+        f.Fecha,
+        f.Horario,
+        i.Idioma,
+        p.Duracion,
+        cla.Clasificacion
+    FROM Funciones f
+    JOIN Peliculas p      ON f.ID_pelicula = p.ID_pelicula
+    JOIN Generos g        ON p.ID_genero = g.ID_genero
+    JOIN Clasificaciones cla ON p.ID_clasificacion = cla.ID_clasificacion
+    JOIN Salas s          ON f.ID_sala = s.ID_sala
+    JOIN Cines c          ON s.ID_cine = c.ID_cine
+    JOIN Idiomas i        ON f.ID_idioma = i.ID_idioma
+    WHERE 
+        (@titulo     IS NULL OR p.Titulo LIKE '%' + @titulo + '%') AND
+        (@genero     IS NULL OR g.Genero = @genero) AND
+        (@fechaDesde IS NULL OR f.Fecha >= @fechaDesde) AND
+        (@fechaHasta IS NULL OR f.Fecha <= @fechaHasta) AND
+        (@idCine     IS NULL OR c.ID_cine = @idCine)
+    ORDER BY f.Fecha, f.Horario;
+END;
+GO
+
+
+EXEC SP_CONSULTAR_FUNCIONES_CINE 
+    @titulo = 'Matrix', 
+    @genero = 'Ciencia Ficción', 
+    @fechaDesde = '2025-10-01', 
+    @fechaHasta = '2025-11-01';
+
+
+
+CREATE PROCEDURE SP_REPORTE_VENTAS_CINE
+    @fechaDesde DATE,
+    @fechaHasta DATE,
+    @idCine     INT = NULL     
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF @fechaDesde IS NULL OR @fechaHasta IS NULL
+    BEGIN
+        RAISERROR('Debe ingresar ambas fechas para el reporte.', 16, 1);
+        RETURN;
+    END;
+
+    SELECT 
+        p.Titulo AS Pelicula,
+        COUNT(e.ID_entrada)                  AS EntradasVendidas,
+        SUM(e.Precio_unitario)               AS TotalRecaudado,
+        AVG(e.Precio_unitario)               AS PrecioPromedio,
+        MIN(f.Fecha)                         AS PrimeraFuncion,
+        MAX(f.Fecha)                         AS UltimaFuncion
+    FROM Entradas e
+    JOIN Funciones f ON e.ID_funcion = f.ID_funcion
+    JOIN Salas s     ON f.ID_sala     = s.ID_sala
+    JOIN Cines c     ON s.ID_cine     = c.ID_cine
+    JOIN Peliculas p ON f.ID_pelicula = p.ID_pelicula
+    WHERE f.Fecha BETWEEN @fechaDesde AND @fechaHasta
+      AND (@idCine IS NULL OR c.ID_cine = @idCine)       
+    GROUP BY p.Titulo
+    ORDER BY TotalRecaudado DESC;
+END;
+GO
+
+
+EXEC SP_REPORTE_VENTAS_CINE 
+    @fechaDesde = '2025-10-01', 
+    @fechaHasta = '2025-10-31';
+
+
+
+CREATE PROCEDURE SP_CONSULTAR_STOCK_BAJO
+ @producto  VARCHAR(50) = NULL,
+    @proveedor VARCHAR(50) = NULL, 
+    @idCine    INT = NULL          
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        p.Producto,
+        pr.Cuit AS CUIT_Proveedor,
+        i.Stock_actual,
+        i.Stock_minimo,
+        DATEDIFF(DAY, i.Fecha_actualizacion, GETDATE()) AS DiasDesdeUltAct,
+        CASE 
+            WHEN i.Stock_actual = 0 THEN 'SIN STOCK'
+            WHEN i.Stock_actual <= i.Stock_minimo THEN 'BAJO'
+            ELSE 'OK'
+        END AS EstadoStock
+    FROM Inventarios i
+    JOIN Productos   p  ON i.ID_producto = p.ID_producto
+    JOIN Proveedores pr ON p.ID_proveedor = pr.ID_proveedor
+    WHERE i.Stock_actual <= i.Stock_minimo
+      AND (@producto  IS NULL OR p.Producto LIKE '%' + @producto + '%')
+      AND (@proveedor IS NULL OR CAST(pr.Cuit AS VARCHAR(20)) LIKE '%' + @proveedor + '%')
+      AND (@idCine    IS NULL OR i.ID_cine = @idCine) 
+    ORDER BY i.Stock_actual ASC;
+END;
+GO
+
+
+EXEC SP_CONSULTAR_STOCK_BAJO;
+
+
+
+
+
+CREATE PROCEDURE SP_PRODUCTOS_MAS_VENDIDOS
+    @fechaDesde DATE = NULL,
+    @fechaHasta DATE = NULL,
+    @producto   VARCHAR(50) = NULL,
+    @proveedor  VARCHAR(50) = NULL,
+    @idCine     INT = NULL             
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        p.Producto,
+        pr.Cuit AS CUIT_Proveedor,
+        SUM(drc.Cantidad)                            AS TotalVendido,
+        SUM(drc.Cantidad * drc.Precio_unitario)      AS TotalRecaudado,
+        COUNT(DISTINCT orc.ID_orden_retiro_confiteria) AS TotalVentas,
+        MIN(orc.Fecha)                                AS PrimeraVenta,
+        MAX(orc.Fecha)                                AS UltimaVenta
+    FROM Detalle_retiro_confiterias drc
+    JOIN Productos   p   ON drc.ID_producto = p.ID_producto
+    JOIN Proveedores pr  ON p.ID_proveedor = pr.ID_proveedor
+    JOIN Orden_retiro_confiterias orc ON drc.ID_orden_retiro_confiteria = orc.ID_orden_retiro_confiteria
+    JOIN Confiterias conf ON orc.ID_confiteria = conf.ID_confiteria
+    JOIN Cines c          ON conf.ID_cine     = c.ID_cine
+    WHERE 
+        (@fechaDesde IS NULL OR orc.Fecha >= @fechaDesde)
+        AND (@fechaHasta IS NULL OR orc.Fecha <= @fechaHasta)
+        AND (@producto   IS NULL OR p.Producto LIKE '%' + @producto + '%')
+        AND (@proveedor  IS NULL OR CAST(pr.Cuit AS VARCHAR(20)) LIKE '%' + @proveedor + '%')
+        AND (@idCine     IS NULL OR c.ID_cine = @idCine)
+    GROUP BY p.Producto, pr.Cuit
+    ORDER BY TotalVendido DESC;
+END;
+GO
+
+
+
+
+EXEC SP_PRODUCTOS_MAS_VENDIDOS 
+    @fechaDesde = '2025-10-01', 
+    @fechaHasta = '2025-10-31';
+
+
+
+
