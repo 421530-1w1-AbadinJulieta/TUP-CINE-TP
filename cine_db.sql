@@ -396,3 +396,49 @@ create table Detalles_facturas (
 	CONSTRAINT FK_Entradas_Det_Fact FOREIGN KEY (ID_entrada) REFERENCES Entradas(ID_entrada),
 	CONSTRAINT FK_Facturas_Det_Fact FOREIGN KEY (ID_Factura) REFERENCES Facturas(ID_factura)
 )
+
+
+CREATE PROCEDURE SP_CONSULTAR_FUNCIONES_CINE
+    @titulo     VARCHAR(50) = NULL,
+    @genero     VARCHAR(50) = NULL,
+    @fechaDesde DATE = NULL,
+    @fechaHasta DATE = NULL,
+    @idCine     INT = NULL          
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        p.Titulo,
+        g.Genero,
+        c.Nombre       AS Cine,
+        s.Nombre_sala  AS Sala,
+        f.Fecha,
+        f.Horario,
+        i.Idioma,
+        p.Duracion,
+        cla.Clasificacion
+    FROM Funciones f
+    JOIN Peliculas p      ON f.ID_pelicula = p.ID_pelicula
+    JOIN Generos g        ON p.ID_genero = g.ID_genero
+    JOIN Clasificaciones cla ON p.ID_clasificacion = cla.ID_clasificacion
+    JOIN Salas s          ON f.ID_sala = s.ID_sala
+    JOIN Cines c          ON s.ID_cine = c.ID_cine
+    JOIN Idiomas i        ON f.ID_idioma = i.ID_idioma
+    WHERE 
+        (@titulo     IS NULL OR p.Titulo LIKE '%' + @titulo + '%') AND
+        (@genero     IS NULL OR g.Genero = @genero) AND
+        (@fechaDesde IS NULL OR f.Fecha >= @fechaDesde) AND
+        (@fechaHasta IS NULL OR f.Fecha <= @fechaHasta) AND
+        (@idCine     IS NULL OR c.ID_cine = @idCine)
+    ORDER BY f.Fecha, f.Horario;
+END;
+GO
+
+
+EXEC SP_CONSULTAR_FUNCIONES_CINE 
+    @titulo = 'Matrix', 
+    @genero = 'Ciencia Ficción', 
+    @fechaDesde = '2025-10-01', 
+    @fechaHasta = '2025-11-01';
+
