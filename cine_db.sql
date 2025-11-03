@@ -520,3 +520,49 @@ EXEC SP_CONSULTAR_STOCK_BAJO;
 
 
 
+
+CREATE PROCEDURE SP_PRODUCTOS_MAS_VENDIDOS
+    @fechaDesde DATE = NULL,
+    @fechaHasta DATE = NULL,
+    @producto   VARCHAR(50) = NULL,
+    @proveedor  VARCHAR(50) = NULL,
+    @idCine     INT = NULL             
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        p.Producto,
+        pr.Cuit AS CUIT_Proveedor,
+        SUM(drc.Cantidad)                            AS TotalVendido,
+        SUM(drc.Cantidad * drc.Precio_unitario)      AS TotalRecaudado,
+        COUNT(DISTINCT orc.ID_orden_retiro_confiteria) AS TotalVentas,
+        MIN(orc.Fecha)                                AS PrimeraVenta,
+        MAX(orc.Fecha)                                AS UltimaVenta
+    FROM Detalle_retiro_confiterias drc
+    JOIN Productos   p   ON drc.ID_producto = p.ID_producto
+    JOIN Proveedores pr  ON p.ID_proveedor = pr.ID_proveedor
+    JOIN Orden_retiro_confiterias orc ON drc.ID_orden_retiro_confiteria = orc.ID_orden_retiro_confiteria
+    JOIN Confiterias conf ON orc.ID_confiteria = conf.ID_confiteria
+    JOIN Cines c          ON conf.ID_cine     = c.ID_cine
+    WHERE 
+        (@fechaDesde IS NULL OR orc.Fecha >= @fechaDesde)
+        AND (@fechaHasta IS NULL OR orc.Fecha <= @fechaHasta)
+        AND (@producto   IS NULL OR p.Producto LIKE '%' + @producto + '%')
+        AND (@proveedor  IS NULL OR CAST(pr.Cuit AS VARCHAR(20)) LIKE '%' + @proveedor + '%')
+        AND (@idCine     IS NULL OR c.ID_cine = @idCine)
+    GROUP BY p.Producto, pr.Cuit
+    ORDER BY TotalVendido DESC;
+END;
+GO
+
+
+
+
+EXEC SP_PRODUCTOS_MAS_VENDIDOS 
+    @fechaDesde = '2025-10-01', 
+    @fechaHasta = '2025-10-31';
+
+
+
+
