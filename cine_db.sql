@@ -484,6 +484,39 @@ EXEC SP_REPORTE_VENTAS_CINE
 
 
 
+CREATE PROCEDURE SP_CONSULTAR_STOCK_BAJO
+ @producto  VARCHAR(50) = NULL,
+    @proveedor VARCHAR(50) = NULL, 
+    @idCine    INT = NULL          
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        p.Producto,
+        pr.Cuit AS CUIT_Proveedor,
+        i.Stock_actual,
+        i.Stock_minimo,
+        DATEDIFF(DAY, i.Fecha_actualizacion, GETDATE()) AS DiasDesdeUltAct,
+        CASE 
+            WHEN i.Stock_actual = 0 THEN 'SIN STOCK'
+            WHEN i.Stock_actual <= i.Stock_minimo THEN 'BAJO'
+            ELSE 'OK'
+        END AS EstadoStock
+    FROM Inventarios i
+    JOIN Productos   p  ON i.ID_producto = p.ID_producto
+    JOIN Proveedores pr ON p.ID_proveedor = pr.ID_proveedor
+    WHERE i.Stock_actual <= i.Stock_minimo
+      AND (@producto  IS NULL OR p.Producto LIKE '%' + @producto + '%')
+      AND (@proveedor IS NULL OR CAST(pr.Cuit AS VARCHAR(20)) LIKE '%' + @proveedor + '%')
+      AND (@idCine    IS NULL OR i.ID_cine = @idCine) 
+    ORDER BY i.Stock_actual ASC;
+END;
+GO
+
+
+EXEC SP_CONSULTAR_STOCK_BAJO;
+
 
 
 
