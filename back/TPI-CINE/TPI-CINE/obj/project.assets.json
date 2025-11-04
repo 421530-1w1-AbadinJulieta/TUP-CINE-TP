@@ -4498,23 +4498,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lucas\\.nuget\\packages\\": {},
+    "C:\\Users\\Home\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucas\\OneDrive\\Escritorio\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\TPI-CINE.csproj",
+      "projectUniqueName": "C:\\Users\\Home\\Desktop\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\TPI-CINE.csproj",
       "projectName": "TPI-CINE",
-      "projectPath": "C:\\Users\\lucas\\OneDrive\\Escritorio\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\TPI-CINE.csproj",
-      "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lucas\\OneDrive\\Escritorio\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\obj\\",
+      "projectPath": "C:\\Users\\Home\\Desktop\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\TPI-CINE.csproj",
+      "packagesPath": "C:\\Users\\Home\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Home\\Desktop\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Home\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4595,8 +4595,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Users\\Home\\Desktop\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
+    }
+  ]
 }
