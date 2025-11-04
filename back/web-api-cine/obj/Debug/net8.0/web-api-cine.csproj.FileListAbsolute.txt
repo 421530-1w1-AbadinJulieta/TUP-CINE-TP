@@ -1,0 +1,9 @@
+D:\daamc\Documents\TPI DATOS\TUP-CINE-TP\back\web-api-cine\obj\Debug\net8.0\web-api-cine.csproj.AssemblyReference.cache
+D:\daamc\Documents\TPI DATOS\TUP-CINE-TP\back\web-api-cine\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\daamc\Documents\TPI DATOS\TUP-CINE-TP\back\web-api-cine\obj\Debug\net8.0\web-api-cine.GeneratedMSBuildEditorConfig.editorconfig
+D:\daamc\Documents\TPI DATOS\TUP-CINE-TP\back\web-api-cine\obj\Debug\net8.0\web-api-cine.AssemblyInfoInputs.cache
+D:\daamc\Documents\TPI DATOS\TUP-CINE-TP\back\web-api-cine\obj\Debug\net8.0\web-api-cine.AssemblyInfo.cs
+D:\daamc\Documents\TPI DATOS\TUP-CINE-TP\back\web-api-cine\obj\Debug\net8.0\web-api-cine.csproj.CoreCompileInputs.cache
+D:\daamc\Documents\TPI DATOS\TUP-CINE-TP\back\web-api-cine\obj\Debug\net8.0\web-api-cine.MvcApplicationPartsAssemblyInfo.cs
+D:\daamc\Documents\TPI DATOS\TUP-CINE-TP\back\web-api-cine\obj\Debug\net8.0\web-api-cine.MvcApplicationPartsAssemblyInfo.cache
+D:\daamc\Documents\TPI DATOS\TUP-CINE-TP\back\web-api-cine\obj\Debug\net8.0\web-api-cine.sourcelink.json
