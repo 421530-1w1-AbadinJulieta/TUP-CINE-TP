@@ -1,9 +1,12 @@
 {
   "Version": 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\agusc\\Desktop\\CINE-TUP-GRUPO\\TUP-CINE-TP\\back\\TPI-CINE\\",
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> cf1b2edcc0b8ea177c2d732e5c886e2a47b27fed
   "WorkspaceRootPath": "D:\\daamc\\Documents\\TPI DATOS\\TUP-CINE-TP\\back\\TPI-CINE\\",
   "Documents": [
     {
@@ -17,7 +20,10 @@
   ],
 =======
   "WorkspaceRootPath": "C:\\Users\\lucas\\OneDrive\\Escritorio\\TUP-CINE-TP\\back\\TPI-CINE\\",
+<<<<<<< HEAD
 >>>>>>> f736ba542212c4b51d0229c3d24884cb9220919f
+=======
+>>>>>>> cf1b2edcc0b8ea177c2d732e5c886e2a47b27fed
   "Documents": [],
 >>>>>>> f3548be03c8088d7a2aedb09d540721b7a105c12
   "DocumentGroupContainers": [

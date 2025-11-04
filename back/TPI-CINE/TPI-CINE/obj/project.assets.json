@@ -4498,23 +4498,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\agusc\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\Home\\.nuget\\packages\\": {},
+>>>>>>> cf1b2edcc0b8ea177c2d732e5c886e2a47b27fed
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\agusc\\Desktop\\CINE-TUP-GRUPO\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\TPI-CINE.csproj",
       "projectName": "TPI-CINE",
       "projectPath": "C:\\Users\\agusc\\Desktop\\CINE-TUP-GRUPO\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\TPI-CINE.csproj",
       "packagesPath": "C:\\Users\\agusc\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\agusc\\Desktop\\CINE-TUP-GRUPO\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Home\\Desktop\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\TPI-CINE.csproj",
+      "projectName": "TPI-CINE",
+      "projectPath": "C:\\Users\\Home\\Desktop\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\TPI-CINE.csproj",
+      "packagesPath": "C:\\Users\\Home\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Home\\Desktop\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\obj\\",
+>>>>>>> cf1b2edcc0b8ea177c2d732e5c886e2a47b27fed
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\agusc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\Home\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> cf1b2edcc0b8ea177c2d732e5c886e2a47b27fed
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4595,7 +4611,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+>>>>>>> cf1b2edcc0b8ea177c2d732e5c886e2a47b27fed
       }
     }
   },
@@ -4604,7 +4624,11 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
       "message": "Problema al leer el archivo de caché C:\\Users\\agusc\\Desktop\\CINE-TUP-GRUPO\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
+=======
+      "message": "Problema al leer el archivo de caché C:\\Users\\Home\\Desktop\\TUP-CINE-TP\\back\\TPI-CINE\\TPI-CINE\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
+>>>>>>> cf1b2edcc0b8ea177c2d732e5c886e2a47b27fed
     }
   ]
 }

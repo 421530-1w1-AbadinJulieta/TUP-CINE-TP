@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TPI-CINE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ece2c6bde2af1d4d4a6d4328490fd02419e0fda0")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f736ba542212c4b51d0229c3d24884cb9220919f")]
+>>>>>>> cf1b2edcc0b8ea177c2d732e5c886e2a47b27fed
 [assembly: System.Reflection.AssemblyProductAttribute("TPI-CINE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TPI-CINE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
