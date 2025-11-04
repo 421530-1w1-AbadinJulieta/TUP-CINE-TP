@@ -2,8 +2,8 @@
   "Version": 1,
 <<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\agusc\\Desktop\\CINE-TUP-GRUPO\\TUP-CINE-TP\\back\\TPI-CINE\\",
-  "Documents": [],
 =======
+<<<<<<< HEAD
   "WorkspaceRootPath": "D:\\daamc\\Documents\\TPI DATOS\\TUP-CINE-TP\\back\\TPI-CINE\\",
   "Documents": [
     {
@@ -15,7 +15,11 @@
       "RelativeMoniker": "D:0:0:{CA12692E-A11C-420F-B48F-AFBA540612E7}|TPI-CINE\\TPI-CINE.csproj|solutionrelative:tpi-cine\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
+=======
+  "WorkspaceRootPath": "C:\\Users\\lucas\\OneDrive\\Escritorio\\TUP-CINE-TP\\back\\TPI-CINE\\",
 >>>>>>> f736ba542212c4b51d0229c3d24884cb9220919f
+  "Documents": [],
+>>>>>>> f3548be03c8088d7a2aedb09d540721b7a105c12
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -53,7 +57,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }
