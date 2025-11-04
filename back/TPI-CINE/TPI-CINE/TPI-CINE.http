@@ -1,0 +1,6 @@
+@TPI_CINE_HostAddress = http://localhost:5175
+
+GET {{TPI_CINE_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
