@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("web-api-cine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf1b2edcc0b8ea177c2d732e5c886e2a47b27fed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e092c3ac310b1cfab0f44f58f2f57557febf8a0c")]
 [assembly: System.Reflection.AssemblyProductAttribute("web-api-cine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("web-api-cine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

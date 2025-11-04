@@ -1,0 +1,214 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "cine_dbContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "MinimumProductVersion": "2.6.1130",
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "web_api_cine",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[Barrios]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Butacas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Cines]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Clasificaciones]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Clientes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Confiterias]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Detalle_promociones]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Detalle_retiro_confiterias]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Detalles_facturas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Entradas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Estado_butacas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Facturas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Funciones]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Generos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Idiomas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Inventarios]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Localidades]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Metodo_pagos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Orden_retiro_confiterias]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Paises]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Peliculas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Productos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Promocion_productos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Promociones]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Proveedores]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Provincias]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reseñas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Roles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Salas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Tipo_butacas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Tipo_Canales]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Tipo_Clientes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Tipo_Salas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Tipo_trabajadores]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Trabajadores]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Trailers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Usuario_Sistemas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SP_CONSULTAR_FUNCIONES_CINE]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[SP_CONSULTAR_STOCK_BAJO]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[SP_OCUPACION_FUNCIONES]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[SP_PRODUCTOS_MAS_VENDIDOS]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[SP_REPORTE_VENTAS_CINE]",
+         "ObjectType": 1
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDatabaseNamesForRoutines": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseInternalAccessModifiersForSprocsAndFunctions": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false,
+   "UseT4Split": false
+}

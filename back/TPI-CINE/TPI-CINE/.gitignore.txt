@@ -1,0 +1,17 @@
+﻿# Archivos de VS
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+
+# Archivos temporales
+*.tmp
+*.dbmdl
+*.bak
+
+# Dependencias locales
+packages/
+node_modules/
