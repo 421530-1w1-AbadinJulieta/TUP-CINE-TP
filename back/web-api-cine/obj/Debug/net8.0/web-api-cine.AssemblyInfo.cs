@@ -14,19 +14,9 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("web-api-cine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD:back/TPI-CINE/TPI-CINE/obj/Debug/net8.0/TPI-CINE.AssemblyInfo.cs
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ece2c6bde2af1d4d4a6d4328490fd02419e0fda0")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f736ba542212c4b51d0229c3d24884cb9220919f")]
->>>>>>> cf1b2edcc0b8ea177c2d732e5c886e2a47b27fed
-[assembly: System.Reflection.AssemblyProductAttribute("TPI-CINE")]
-[assembly: System.Reflection.AssemblyTitleAttribute("TPI-CINE")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf1b2edcc0b8ea177c2d732e5c886e2a47b27fed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02e39e144b4cb2b78dcd9b468f36bd44d868118f")]
 [assembly: System.Reflection.AssemblyProductAttribute("web-api-cine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("web-api-cine")]
->>>>>>> e092c3ac310b1cfab0f44f58f2f57557febf8a0c:back/web-api-cine/obj/Debug/net8.0/web-api-cine.AssemblyInfo.cs
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.
