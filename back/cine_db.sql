@@ -235,18 +235,18 @@ create table Trailers
 		references Peliculas (ID_pelicula)
 );
 
-create table Rese�as 
+create table Reseñas 
 ( 
-	ID_rese�a int IDENTITY(1,1),
+	ID_reseña int IDENTITY(1,1),
 	ID_cliente int,
 	ID_pelicula int,
 	Puntuacion int,
 	Comentario varchar(50),
 	Fecha datetime
-	constraint pk_rese�as primary key (ID_rese�a),
-	constraint fk_clientes_Rese�as foreign key (ID_cliente)
+	constraint pk_reseñas primary key (ID_reseña),
+	constraint fk_clientes_Reseñas foreign key (ID_cliente)
 		references Clientes (ID_cliente),
-	constraint fk_peliculas_Rese�as foreign key (ID_pelicula)
+	constraint fk_peliculas_Reseñas foreign key (ID_pelicula)
 		references Peliculas (ID_pelicula)
 )
 
@@ -306,7 +306,7 @@ create table Roles (
 create table Usuario_Sistemas (
 	ID_sistema int identity(1,1),
 	Nombre_usuario varchar(100),
-	Contrase�a varchar(100),
+	Contraseña varchar(100),
 	ID_rol int,
 	ID_trabajador int,
 	ID_cliente int,
@@ -397,6 +397,8 @@ create table Detalles_facturas (
 	CONSTRAINT FK_Facturas_Det_Fact FOREIGN KEY (ID_Factura) REFERENCES Facturas(ID_factura)
 )
 
+ALTER TABLE Trabajadores
+ADD ContraseñaHash NVARCHAR(MAX) NULL
 
 CREATE PROCEDURE SP_CONSULTAR_FUNCIONES_CINE
     @titulo     VARCHAR(50) = NULL,
@@ -563,6 +565,40 @@ EXEC SP_PRODUCTOS_MAS_VENDIDOS
     @fechaDesde = '2025-10-01', 
     @fechaHasta = '2025-10-31';
 
+CREATE OR ALTER PROCEDURE SP_OCUPACION_FUNCIONES
+    @idCine INT = NULL,
+    @idFuncion INT = NULL,
+    @fechaDesde DATE = NULL,
+    @fechaHasta DATE = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
 
-
+    SELECT 
+        f.ID_funcion,
+        p.Titulo AS Pelicula,
+        c.Nombre AS Cine,
+        s.Nombre_sala AS Sala,
+        f.Fecha,
+        f.Horario,
+        COUNT(DISTINCT b.ID_butaca) AS CapacidadTotal,
+        COUNT(DISTINCT e.ID_butaca) AS ButacasOcupadas,
+        CAST(COUNT(DISTINCT e.ID_butaca) * 100.0 / NULLIF(COUNT(DISTINCT b.ID_butaca),0) AS DECIMAL(5,2)) AS PorcentajeOcupacion
+    FROM Funciones f
+    INNER JOIN Peliculas p ON p.ID_pelicula = f.ID_pelicula
+    INNER JOIN Salas s ON s.ID_sala = f.ID_sala
+    INNER JOIN Cines c ON c.ID_cine = s.ID_Cine
+    INNER JOIN Butacas b ON b.ID_sala = s.ID_sala
+    LEFT JOIN Entradas e ON e.ID_funcion = f.ID_funcion AND e.ID_butaca = b.ID_butaca
+    WHERE 
+        (@idCine IS NULL OR c.ID_cine = @idCine)
+        AND (@idFuncion IS NULL OR f.ID_funcion = @idFuncion)
+        AND (@fechaDesde IS NULL OR f.Fecha >= @fechaDesde)
+        AND (@fechaHasta IS NULL OR f.Fecha <= @fechaHasta)
+    GROUP BY 
+        f.ID_funcion, p.Titulo, c.Nombre, s.Nombre_sala, f.Fecha, f.Horario
+    ORDER BY 
+        f.Fecha, f.Horario;
+END
+GO
 
